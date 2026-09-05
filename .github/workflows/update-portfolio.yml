@@ -1,0 +1,42 @@
+name: Update portfolio README
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Replace flagship mission
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("README.md")
+          text = path.read_text(encoding="utf-8")
+
+          old = '''  <tr>\n    <td><b>🌿 Flagship Mission</b></td>\n    <td>\n      <a href="https://github.com/Sharar12/Plantify"><b>Plantify</b></a> — Full-stack plant e-commerce platform with Laravel 12 API, Next.js 16 frontend, SSLCommerz payments, multi-role auth, wishlist, reviews, Q&A, inbox, and delivery tracking.\n    </td>\n  </tr>'''
+
+          new = '''  <tr>\n    <td><b>🛒 Flagship Mission</b></td>\n    <td>\n      <a href="https://github.com/Sharar12/E-Commerce_ApnarDokan_Frontend"><b>ApnarDokan</b></a> — Full-stack e-commerce platform built with Next.js, TypeScript, Tailwind CSS, Laravel 12, and MySQL, featuring authentication, product and category management, shopping cart, checkout workflows, order management, role-based administration, and a decoupled frontend/backend architecture.\n    </td>\n  </tr>'''
+
+          if old not in text:
+              raise SystemExit("Target Plantify Flagship Mission block was not found; no changes made.")
+
+          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+      - name: Commit README update and remove workflow
+        run: |
+          rm -f .github/workflows/update-portfolio.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md .github/workflows/update-portfolio.yml
+          git commit -m "Update flagship portfolio project to ApnarDokan"
+          git push
