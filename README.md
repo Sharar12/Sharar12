@@ -42,9 +42,9 @@
     <td>Uttara, Dhaka, Bangladesh 🇧🇩</td>
   </tr>
   <tr>
-    <td><b>🌿 Flagship Mission</b></td>
+    <td><b>🛒 Flagship Mission</b></td>
     <td>
-      <a href="https://github.com/Sharar12/Plantify"><b>Plantify</b></a> — Full-stack plant e-commerce platform with Laravel 12 API, Next.js 16 frontend, SSLCommerz payments, multi-role auth, wishlist, reviews, Q&A, inbox, and delivery tracking.
+      <a href="https://github.com/Sharar12/E-Commerce_ApnarDokan_Frontend"><b>ApnarDokan</b></a> — Full-stack e-commerce platform built with Next.js, TypeScript, Tailwind CSS, Laravel 12, and MySQL, featuring authentication, product and category management, shopping cart, checkout workflows, order management, role-based administration, and a decoupled frontend/backend architecture.
     </td>
   </tr>
   <tr>
